@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Performer to Song</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      background-color: #007BFF;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    section, aside {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    section {
+      float: left;
+      width: 63%;
+    }
+
+    aside {
+      float: right;
+      width: 30%;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    input[type="submit"] {
+      display: inline-block;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 10px;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    td {
+      background-color: #f9f9f9;
+    }
+
+    footer {
+      clear: both;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Select the Artist to Add to the List of Performers</h1>
+</header>
+<section>
+  <h2>Select artist:</h2>
+  <!-- Dynamically display radio buttons for each artist -->
+  <form action="/songDetails" method="post">
+  <div th:each="artist : ${artists}">
+    <label>
+      <input type="radio" name="artistId" th:value="${artist.id}"
+             th:text="${artist.firstName} + ' ' + ${artist.lastName}">
+    </label>
+    <br/><br/>
+  </div>
+  <input type="submit" value="Add Artist">
+  </form>
+</section>
+<aside>
+  <h2>Track Details</h2>
+  <table>
+    <tr>
+      <th>Track ID</th>
+      <td th:text="${song.trackId}">2</td>
+    </tr>
+  </table>
+</aside>
+<footer>
+  &copy; 2024 My Music Store. All rights reserved.
+</footer>
+</body>
+</html>

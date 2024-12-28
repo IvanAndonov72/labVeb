@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #555;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .song-info {
+            margin-bottom: 20px;
+        }
+
+        .song-info div {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .performer-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .performer-list li {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 th:text="${song.title}">Song Title</h1>
+</header>
+
+<section>
+    <div class="song-info">
+        <h2>Genre:</h2>
+        <div th:text="${song.genre}">Rock</div>
+
+        <h2>Year:</h2>
+        <div th:text="${song.releaseYear}">2024</div>
+    </div>
+
+    <div class="performer-list">
+        <h2>Performers:</h2>
+        <ul th:each="artist : ${song.getPerformers()}">
+            <li th:text="${artist.getFirstName()} + ' ' + ${artist.getLastName()}"></li>
+        </ul>
+    </div>
+</section>
+
+<footer>
+    &copy; 2024 My Music Store. All rights reserved.
+</footer>
+</body>
+</html>

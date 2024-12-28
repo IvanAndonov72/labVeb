@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Songs Homepage - Welcome to My Music Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 8px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    main {
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .song-option {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    input[type="submit"] {
+      display: inline-block;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Welcome to My Music Store</h1>
+</header>
+<main>
+  <h2>Choose a song:</h2>
+  <form method="post" action="/artist">
+    <div th:each="song : ${songs}" class="song-option">
+      <label for="trackId">
+        <input id="trackId" type="radio" name="trackId" th:value="${song.trackId}"
+               th:text="'Title: '+${song.title}+', Genre: '+ ${song.genre}+', Release year: '+ ${song.releaseYear}">
+      </label>
+    </div>
+    <input type="submit" value="Submit">
+  </form>
+</main>
+<footer>
+  &copy; 2024 My Music Store. All rights reserved.
+</footer>
+</body>
+</html>
