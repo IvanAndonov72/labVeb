@@ -78,6 +78,50 @@
       font-size: 0.9rem;
       color: #777;
     }
+    .edit-button {
+        display: inline-block;
+        background-color: #28a745; /* Green color for the button */
+        color: white;
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none; /* Remove underline */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .delete-button {
+        display: inline-block;
+        background-color: #8B0000; /* Green color for the button */
+        color: white;
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none; /* Remove underline */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .add-button {
+        display: inline-block;
+        background-color: #007BFF; /* Blue color for consistency */
+        color: white;
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none; /* Remove underline */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -90,11 +134,20 @@
     <div th:each="song : ${songs}" class="song-option">
       <label for="trackId">
         <input id="trackId" type="radio" name="trackId" th:value="${song.trackId}"
-               th:text="'Title: '+${song.title}+', Genre: '+ ${song.genre}+', Release year: '+ ${song.releaseYear}">
+               th:text="'Title: '+${song.title}+', Album: '+${song.album.name}+ ', Genre: '+ ${song.genre}+', Release year: '+ ${song.releaseYear}">
+
       </label>
+        <a th:href="'/songs/edit/' + ${song.id}" class="edit-button">Edit</a>
+        <a th:href="'/songs/delete/' + ${song.id}" class="delete-button">Delete</a>
     </div>
     <input type="submit" value="Submit">
   </form>
+
+
+      <div class="button-container">
+          <a href="/songs/add-form" class="add-button">Add New Song</a>
+      </div>
+
 </main>
 <footer>
   &copy; 2024 My Music Store. All rights reserved.

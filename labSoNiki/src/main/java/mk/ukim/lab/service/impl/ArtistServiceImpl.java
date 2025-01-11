@@ -1,9 +1,10 @@
 package mk.ukim.lab.service.impl;
 
 import mk.ukim.lab.model.Artist;
+import mk.ukim.lab.repository.jpa.ArtistRepositoryJpa;
 import mk.ukim.lab.service.ArtistService;
 import org.springframework.stereotype.Service;
-import mk.ukim.lab.repository.ArtistRepository;
+import mk.ukim.lab.repository.impl.ArtistRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,9 +12,9 @@ import java.util.Optional;
 @Service
 public class ArtistServiceImpl implements ArtistService {
 
-    private final ArtistRepository artistRepository;
+    private final ArtistRepositoryJpa artistRepository;
 
-    public ArtistServiceImpl(ArtistRepository artistRepository) {
+    public ArtistServiceImpl(ArtistRepositoryJpa artistRepository) {
         this.artistRepository = artistRepository;
     }
 

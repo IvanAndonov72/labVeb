@@ -114,6 +114,7 @@
   <h2>Select artist:</h2>
   <!-- Dynamically display radio buttons for each artist -->
   <form action="/songDetails" method="post">
+  <input type="hidden" name="trackId" th:value="${song.trackId}">
   <div th:each="artist : ${artists}">
     <label>
       <input type="radio" name="artistId" th:value="${artist.id}"

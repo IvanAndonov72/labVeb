@@ -24,10 +24,13 @@ public class SongDetailsController {
 
 
     @PostMapping
-    public String getSongDetails(@RequestParam Long artistId, Model model){
+    public String getSongDetails(@RequestParam(required = false) String trackId,@RequestParam(required = false) Long artistId, Model model){
+        Optional<Song> optionalSong = songService.findByTrackId(trackId);
         Optional<Artist> optionalArtist = artistService.ArtistfindById(artistId);
-        if(optionalArtist.isPresent()){
-            Artist artist
+        if(optionalSong.isPresent() && optionalArtist.isPresent()){
+            Song song = optionalSong.get();
+            Artist artist=optionalArtist.get();
+            songService.addArtistToSong(artist,song);
             model.addAttribute("song", song);
             return "songDetails";
         }else{
